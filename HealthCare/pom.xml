@@ -47,6 +47,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>4.0.1.RELEASE</version>
+            <type>jar</type>
         </dependency>
  
         <!-- The spring-web module provides basic web-oriented integration features 

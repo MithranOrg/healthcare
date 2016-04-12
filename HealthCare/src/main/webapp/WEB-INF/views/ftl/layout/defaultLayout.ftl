@@ -9,7 +9,7 @@
         <meta name="author" content="Madhan">
 
         <title>Login Page</title>
-       <#include "stylesList.ftl"/>
+       <#include "styleList.ftl"/>
         <title>
         ${title}
             </title>

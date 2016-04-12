@@ -8,9 +8,11 @@ package com.generic.view;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
@@ -34,6 +36,7 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 		resolver.setCache(true); 
 		resolver.setPrefix(""); 
 		resolver.setSuffix(".ftl"); 
+                resolver.setOrder(Integer.MAX_VALUE);
 		return resolver; 
 	}
 
@@ -43,5 +46,16 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 		freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/ftl/");
 		return freeMarkerConfigurer; 
 	}
+       
+        @Bean
+        public ViewResolver  getViewResolver(){
+            InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+            resolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
+            resolver.setCache(true);
+            resolver.setPrefix("/WEB-INF/jsp/");
+            resolver.setSuffix(".jsp");
+            resolver.setOrder(Integer.MIN_VALUE);
+            return resolver;
+        }
 
 }

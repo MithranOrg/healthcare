@@ -24,13 +24,9 @@ public class SpringController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
-        return "redirect:/home";
+        return "redirect:/login";
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String init(@ModelAttribute("model") ModelMap model) {
-       return "home";
-    }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(@ModelAttribute("model") ModelMap model) {
